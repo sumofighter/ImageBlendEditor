@@ -15,6 +15,7 @@ import UIKit
         case contrast
         case brightness
         case saturation
+        case noise
     }
     
     private var availableFilters: [String] = [
@@ -39,6 +40,7 @@ import UIKit
     @objc public var brightness: CGFloat = 0
     @objc public var contrast: CGFloat = 0
     @objc public var saturation: CGFloat = 1
+    @objc public var noise: CGFloat = 20
     @objc public var imageAlpha = 1.0
     @objc public var overlayImageAlpha = 1.0
     
@@ -64,6 +66,10 @@ import UIKit
             return
         case .saturation:
             let img = model?.workingImage?.imageSaturation(value: saturation)
+            model?.workingImage = img
+            return
+        case .noise:
+            let img = model?.workingImage?.imageNoise(value: noise)
             model?.workingImage = img
             return
         }
@@ -137,6 +143,25 @@ extension UIImage {
         saturationFilter.setValue(aCIImage, forKey: "inputImage")
         saturationFilter.setValue(value, forKey: "inputSaturation")
         let outputImage = saturationFilter.outputImage!
+        let cgimg = context.createCGImage(outputImage, from: outputImage.extent)
+        return UIImage(cgImage: cgimg!)
+    }
+    
+    func imageNoise(value : CGFloat) -> UIImage? {
+        let aUIImage = self
+        let aCGImage = aUIImage.cgImage
+        
+        let aCIImage = CIImage(cgImage: aCGImage!)
+        let context = CIContext(options: nil)
+        guard let noiseFilter = CIFilter(name: "CIUnsharpMask") else {
+            print("unable to obtain brightnessFilter")
+            return nil
+        }
+        noiseFilter.setValue(aCIImage, forKey: "inputImage")
+        noiseFilter.setValue(7, forKey: kCIInputRadiusKey)
+        noiseFilter.setValue(value, forKey: kCIInputIntensityKey)
+        
+        let outputImage = noiseFilter.outputImage!
         let cgimg = context.createCGImage(outputImage, from: outputImage.extent)
         return UIImage(cgImage: cgimg!)
     }

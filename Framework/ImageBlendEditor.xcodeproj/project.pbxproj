@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7C08863528F5FDC700FE2E16 /* Overlays.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C08863428F5FDC700FE2E16 /* Overlays.xcassets */; };
+		7C08864B28F6071700FE2E16 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C08864A28F6071700FE2E16 /* Extensions.swift */; };
+		7C08864D28F607F200FE2E16 /* ImageBlendModel+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C08864C28F607F200FE2E16 /* ImageBlendModel+Models.swift */; };
 		AE51B32125A346E30016051B /* CircularAngleIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE51B32025A346E30016051B /* CircularAngleIndicator.swift */; };
 		F8A4715124377ABF00C2A46A /* ImageBlendEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A4714724377ABF00C2A46A /* ImageBlendEditor.framework */; };
 		F8A4715624377ABF00C2A46A /* PhotoCropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A4715524377ABF00C2A46A /* PhotoCropTests.swift */; };
@@ -75,6 +77,8 @@
 
 /* Begin PBXFileReference section */
 		7C08863428F5FDC700FE2E16 /* Overlays.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Overlays.xcassets; sourceTree = "<group>"; };
+		7C08864A28F6071700FE2E16 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7C08864C28F607F200FE2E16 /* ImageBlendModel+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageBlendModel+Models.swift"; sourceTree = "<group>"; };
 		AE51B32025A346E30016051B /* CircularAngleIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularAngleIndicator.swift; sourceTree = "<group>"; };
 		F8A4714724377ABF00C2A46A /* ImageBlendEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageBlendEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A4714A24377ABF00C2A46A /* PhotoCrop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCrop.h; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				F8A4717E24377D0100C2A46A /* HorizontalDial */,
 				F8D4EADE25F8B274007D5618 /* ImageBlend.swift */,
 				F8D4EABF25F2976C007D5618 /* ImageBlendModel.swift */,
+				7C08864C28F607F200FE2E16 /* ImageBlendModel+Models.swift */,
 				F8D4EAEA25F8EF7F007D5618 /* ImageBlendOperation.swift */,
 				F8A4718124377D0100C2A46A /* ImageBlendViewController.swift */,
 				F8A471FB2438544B00C2A46A /* ImageBlendEditorViewController.swift */,
@@ -238,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A4717C24377D0100C2A46A /* RadianAngle.swift */,
+				7C08864A28F6071700FE2E16 /* Extensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 				F8D4EADF25F8B274007D5618 /* ImageBlend.swift in Sources */,
 				F8F4DBA8244034150021FABA /* PhotoCropImageViewController.swift in Sources */,
 				F8D4EAC025F2976C007D5618 /* ImageBlendModel.swift in Sources */,
+				7C08864D28F607F200FE2E16 /* ImageBlendModel+Models.swift in Sources */,
 				F8F4DB89243E14340021FABA /* ImageBlendEditorViewController.swift in Sources */,
 				F8A471B724377D0200C2A46A /* CropView.swift in Sources */,
 				F8A471AB24377D0200C2A46A /* PhotoCropViewController+Customization.swift in Sources */,
@@ -458,6 +465,7 @@
 				F8A471A324377D0200C2A46A /* CGPoint+PhotoCropExtension.swift in Sources */,
 				F8F4DBB92440B7DB0021FABA /* BaseCroppingDial.swift in Sources */,
 				F8A471A724377D0200C2A46A /* HorizontalDial.swift in Sources */,
+				7C08864B28F6071700FE2E16 /* Extensions.swift in Sources */,
 				F8A471AD24377D0200C2A46A /* PhotoCropView+NSLayoutConstraint.swift in Sources */,
 				F8A471B824377D0200C2A46A /* CropView+Lines.swift in Sources */,
 				AE51B32125A346E30016051B /* CircularAngleIndicator.swift in Sources */,

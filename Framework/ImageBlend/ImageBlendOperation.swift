@@ -23,7 +23,5 @@ class ImageBlendOperation: Operation {
             return
         }
         blend.apply()
-        
     }
-    
 }
