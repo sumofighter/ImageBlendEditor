@@ -97,17 +97,14 @@ open class ImageBlendViewController: UIViewController {
     
     // MARK: - Public
     
-    public func recreate(image: UIImage, overlayImage: UIImage) {
-        self.photoView.removeFromSuperview()
-        self.image = image
-        self.overlayImage = overlayImage
-        let photoView = PhotoCropView(frame: self.view.bounds,
-                                      image: self.image,
-                                      overlayImage: self.overlayImage,
-                                      customizationDelegate: self)
+    public func refresh() {
+        photoView.removeFromSuperview()
+        photoView = PhotoCropView(frame: self.view.bounds,
+                                  image: self.image,
+                                  overlayImage: self.overlayImage,
+                                  customizationDelegate: self)
         photoView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(photoView)
-        self.photoView = photoView
     }
     
     public func resetView() {

@@ -52,7 +52,7 @@ class BlendManager {
     }
     
     private func retroOverlay() -> ImageBlendModel? {
-        guard let overlayImage = UIImage(named: "filter_1"), let thumb = UIImage(named: "paper_thumb_2") else {
+        guard let overlayImage = UIImage(named: "filter_1"), let thumb = UIImage(named: "paper_thumb_1") else {
             return nil
         }
         let layers = [overlayImage, image]

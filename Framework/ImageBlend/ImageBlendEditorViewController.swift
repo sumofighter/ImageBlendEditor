@@ -24,7 +24,6 @@ import UIKit
 @objc public class ImageBlendEditorViewController: UIViewController {
     
     public weak var delegate:ImageBlendEditorViewControllerDelegate?
-    private var index = 0
     private var models: [ImageBlendModel] = []
     
     @objc public var image: UIImage?
@@ -84,30 +83,11 @@ import UIKit
         guard models.isEmpty == false else {
             return
         }
-
-        photoCropView.alpha = 0
         currentCircularIndicatorView?.angle = 0
+        photoCropView.alpha = 0
         
         // Fetch default model
-        let firstModel = models[0]
-        
-        firstModel.prepare {
-            $0[1]
-        } completion: { images in
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
-                self.imageBlendViewController.overlayImage = images[0]
-                self.imageBlendViewController.image = images[1]
-                self.imageBlendViewController.setupSubviews()
-                
-                self.croppingDials?.forEach { $0.value = 0.0 }
-                self.setupAngleLabelValue(radians: 0.0)
-                
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.photoCropView.alpha = 1.0
-                })
-            })
-        }
+        applyModel(at: 0)
     }
     
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -132,24 +112,32 @@ import UIKit
     
     // MARK: Public
     
-    @objc public func recreate(image: UIImage, overlayImage: UIImage) {
-        self.image = image
-        self.overlayImage = overlayImage
-        imageBlendViewController.recreate(image: image, overlayImage: overlayImage)
+    @objc public func applyModel(at index: Int) {
         photoCropView.alpha = 0
         
-        //FIXME: Zoom setup
-        //self.photoView.minimumZoomScale = 1.0;
-        //self.photoView.maximumZoomScale = 10.0;
+        // Fetch default model
+        let model = models[index]
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
-            self.croppingDials?.forEach { $0.value = 0.0 }
-            self.setupAngleLabelValue(radians: 0.0)
+        model.prepare {
+            $0[1]
+        } completion: { images in
             
-            UIView.animate(withDuration: 0.1, animations: {
-                self.photoCropView.alpha = 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
+                self.image = images[1]
+                self.overlayImage = images[0]
+                self.imageBlendViewController.overlayImage = images[0]
+                self.imageBlendViewController.image = images[1]
+                self.imageBlendViewController.setupSubviews()
+                
+                self.croppingDials?.forEach { $0.value = 0.0 }
+                self.setupAngleLabelValue(radians: 0.0)
+                self.imageBlendViewController.refresh()
+                
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.photoCropView.alpha = 1.0
+                })
             })
-        })
+        }
     }
     
     @objc public func rotateLeft(completion: (()->())?) {
@@ -294,8 +282,7 @@ extension  ImageBlendEditorViewController: UICollectionViewDataSource, UICollect
     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        index = indexPath.row
-        // TODO: Implement
+        applyModel(at: indexPath.row)
     }
     
 }

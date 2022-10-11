@@ -101,4 +101,8 @@ import UIKit
     public func suspend() {
         operations.isSuspended = true
     }
+    
+    public override var description : String {
+        return "<\(type(of: self)): 0x\(String(unsafeBitCast(self, to: Int.self), radix: 16, uppercase: false))> \(name)"
+    }
 }
