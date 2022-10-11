@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xqD-q0-mkO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xqD-q0-mkO">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77F-1o-dqv">
-                                <rect key="frame" x="761" y="7" width="110" height="399"/>
+                                <rect key="frame" x="465" y="7" width="110" height="585"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8i-6r-RLB">
-                                        <rect key="frame" x="8" y="188" width="38" height="21"/>
+                                        <rect key="frame" x="8" y="281" width="38" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="BES-jZ-mIb"/>
                                             <constraint firstAttribute="width" constant="38" id="EWo-KJ-Lzb"/>
@@ -32,7 +32,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hO-eV-YDC" customClass="VerticalDial" customModule="ImageBlendEditor" customModuleProvider="target">
-                                        <rect key="frame" x="53" y="6.6666666666666572" width="46" height="385.66666666666674"/>
+                                        <rect key="frame" x="53" y="6.6666666666666856" width="46" height="571.66666666666652"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
@@ -82,7 +82,7 @@
                                         </connections>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYI-cY-D6x" customClass="CircularAngleIndicator" customModule="ImageBlendEditor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="171" width="54" height="54"/>
+                                        <rect key="frame" x="0.0" y="264" width="54" height="54"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="54" id="0vT-4x-y3p"/>
@@ -237,7 +237,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJg-WE-bjW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="112" width="414" height="528"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <segue destination="RRG-VQ-rUF" kind="embed" id="Cc2-cf-g9R"/>
@@ -315,7 +315,7 @@
                             <constraint firstAttribute="trailing" secondItem="77F-1o-dqv" secondAttribute="trailing" constant="25" id="FJT-Ke-iEe"/>
                             <constraint firstItem="pJg-WE-bjW" firstAttribute="leading" secondItem="0AX-ko-kYy" secondAttribute="leading" id="Fa0-LJ-gj3"/>
                             <constraint firstAttribute="bottom" secondItem="77F-1o-dqv" secondAttribute="bottom" constant="8" id="FzK-CC-RzT"/>
-                            <constraint firstItem="pJg-WE-bjW" firstAttribute="top" secondItem="0AX-ko-kYy" secondAttribute="top" id="H2x-1P-hKz"/>
+                            <constraint firstItem="pJg-WE-bjW" firstAttribute="top" secondItem="wmn-vn-EMb" secondAttribute="top" id="H2x-1P-hKz"/>
                             <constraint firstItem="6dg-wz-Myy" firstAttribute="top" secondItem="c49-KU-mv8" secondAttribute="top" id="Jlz-js-vy6"/>
                             <constraint firstItem="77F-1o-dqv" firstAttribute="top" secondItem="c49-KU-mv8" secondAttribute="top" constant="7" id="K3d-im-AMI"/>
                             <constraint firstItem="nKD-hO-s8Y" firstAttribute="trailing" secondItem="c49-KU-mv8" secondAttribute="trailing" constant="-5" id="R6p-8v-I5j"/>
@@ -326,7 +326,7 @@
                             <constraint firstItem="nKD-hO-s8Y" firstAttribute="leading" secondItem="0AX-ko-kYy" secondAttribute="leading" constant="6" id="fyH-ag-NBT"/>
                             <constraint firstItem="wmn-vn-EMb" firstAttribute="leading" secondItem="0AX-ko-kYy" secondAttribute="leading" id="i4H-OV-AfC"/>
                             <constraint firstItem="xj6-qQ-Gfd" firstAttribute="top" secondItem="c49-KU-mv8" secondAttribute="top" constant="10" id="iG4-E2-ohM"/>
-                            <constraint firstItem="wmn-vn-EMb" firstAttribute="height" secondItem="pJg-WE-bjW" secondAttribute="height" constant="-115" id="n4s-QF-FGJ">
+                            <constraint firstItem="wmn-vn-EMb" firstAttribute="height" secondItem="pJg-WE-bjW" secondAttribute="height" id="n4s-QF-FGJ">
                                 <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                             </constraint>
@@ -342,11 +342,11 @@
                                 <exclude reference="6dg-wz-Myy"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="U6e-m3-GR6"/>
                                 <exclude reference="1MJ-Ts-gyf"/>
                                 <exclude reference="BMf-ij-Y79"/>
                                 <exclude reference="rCp-XU-pAy"/>
                                 <exclude reference="yDx-xt-bb6"/>
-                                <exclude reference="U6e-m3-GR6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
@@ -379,8 +379,8 @@
                                 <exclude reference="77F-1o-dqv"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="rCp-XU-pAy"/>
                                 <include reference="U6e-m3-GR6"/>
+                                <include reference="rCp-XU-pAy"/>
                                 <exclude reference="Rc8-9q-XN4"/>
                             </mask>
                         </variation>
@@ -389,9 +389,9 @@
                                 <exclude reference="77F-1o-dqv"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="U6e-m3-GR6"/>
                                 <include reference="rCp-XU-pAy"/>
                                 <exclude reference="yDx-xt-bb6"/>
-                                <include reference="U6e-m3-GR6"/>
                                 <exclude reference="Rc8-9q-XN4"/>
                             </mask>
                         </variation>
@@ -418,16 +418,15 @@
         <scene sceneID="nSP-AJ-zrU">
             <objects>
                 <viewController id="RRG-VQ-rUF" customClass="ImageBlendViewController" customModule="ImageBlendEditor" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleAspectFill" id="4cC-nr-SyV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                    <view key="view" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="4cC-nr-SyV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="9fV-kv-31Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxR-gq-XdE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-62" y="143"/>
+            <point key="canvasLocation" x="6" y="52"/>
         </scene>
     </scenes>
     <resources>
