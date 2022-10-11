@@ -14,6 +14,7 @@ import UIKit
         case filter
         case contrast
         case brightness
+        case saturation
     }
     
     private var availableFilters: [String] = [
@@ -37,6 +38,7 @@ import UIKit
     @objc public var filter: Filter = .process
     @objc public var brightness: CGFloat = 0
     @objc public var contrast: CGFloat = 0
+    @objc public var saturation: CGFloat = 1
     @objc public var imageAlpha = 1.0
     @objc public var overlayImageAlpha = 1.0
     
@@ -58,6 +60,10 @@ import UIKit
             return
         case .brightness:
             let img = model?.workingImage?.imageBrightness(value: brightness)
+            model?.workingImage = img
+            return
+        case .saturation:
+            let img = model?.workingImage?.imageSaturation(value: saturation)
             model?.workingImage = img
             return
         }
@@ -116,6 +122,22 @@ extension UIImage {
         let outputImage = brightnessFilter.outputImage!
         let cgimg = context.createCGImage(outputImage, from: outputImage.extent)
         return UIImage(cgImage: cgimg!)
+    }
+    
+    func imageSaturation(value : CGFloat) -> UIImage? {
+        let aUIImage = self
+        let aCGImage = aUIImage.cgImage
         
+        let aCIImage = CIImage(cgImage: aCGImage!)
+        let context = CIContext(options: nil)
+        guard let saturationFilter = CIFilter(name: "CIColorControls") else {
+            print("unable to obtain brightnessFilter")
+            return nil
+        }
+        saturationFilter.setValue(aCIImage, forKey: "inputImage")
+        saturationFilter.setValue(value, forKey: "inputSaturation")
+        let outputImage = saturationFilter.outputImage!
+        let cgimg = context.createCGImage(outputImage, from: outputImage.extent)
+        return UIImage(cgImage: cgimg!)
     }
 }
