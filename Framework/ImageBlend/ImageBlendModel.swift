@@ -20,6 +20,8 @@ import UIKit
     case transfer
     case curve
     case linear
+    case sepia
+    case vignette
 }
 
 @objc public class ImageBlendModel:NSObject {

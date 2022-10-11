@@ -38,10 +38,10 @@ class BlendManager {
         let model = ImageBlendModel(layers: layers, thumb: thumb, name: "basic overlay")
         
         let blend1 = ImageBlend(action: .filter)
-        blend1.filter = .chrome
+        blend1.filter = .vignette
         
         let blend2 = ImageBlend(action: .contrast)
-        blend2.contrast = 2.0
+        blend2.contrast = 1
         
         let blend3 = ImageBlend(action: .brightness)
         blend3.brightness = 0

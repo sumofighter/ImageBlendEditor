@@ -237,14 +237,14 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJg-WE-bjW">
-                                <rect key="frame" x="0.0" y="112" width="414" height="528"/>
+                                <rect key="frame" x="0.0" y="107" width="414" height="533"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <segue destination="RRG-VQ-rUF" kind="embed" id="Cc2-cf-g9R"/>
                                 </connections>
                             </containerView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmn-vn-EMb">
-                                <rect key="frame" x="0.0" y="112" width="414" height="528"/>
+                                <rect key="frame" x="0.0" y="107" width="414" height="533"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MLm-RJ-eKf">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -270,11 +270,11 @@
                                 </connections>
                             </collectionView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xj6-qQ-Gfd">
-                                <rect key="frame" x="82.666666666666671" y="54" width="248.66666666666663" height="50"/>
+                                <rect key="frame" x="82.666666666666671" y="54" width="248.66666666666663" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="hfH-ML-PY5"/>
+                                    <constraint firstAttribute="height" constant="45" id="hfH-ML-PY5"/>
                                 </constraints>
                                 <imageReference key="image" image="hint" symbolScale="small" renderingMode="template"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="light"/>

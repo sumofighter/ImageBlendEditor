@@ -27,7 +27,9 @@ import UIKit
         "CIPhotoEffectTonal",
         "CIPhotoEffectTransfer",
         "CILinearToSRGBToneCurve",
-        "CISRGBToneCurveToLinear"
+        "CISRGBToneCurveToLinear",
+        "CISepiaTone",
+        "CIVignette"
     ]
     
     private var action: Action
