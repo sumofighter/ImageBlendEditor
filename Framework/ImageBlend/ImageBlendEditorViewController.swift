@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol ImageBlendEditorViewControllerDelegate : class {
+@objc public protocol ImageBlendEditorViewControllerDelegate : AnyObject {
     
     /**
      Called on image cropped.
@@ -29,6 +29,7 @@ import UIKit
     @objc public var image: UIImage?
     @objc public var overlayImage: UIImage?
     
+    @IBOutlet weak var thumbLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var hCollectionView: UICollectionView?
     @IBOutlet weak var vCollectionView: UICollectionView?
     @IBOutlet var circularIndicatorViews: [CircularAngleIndicator]!
@@ -41,6 +42,13 @@ import UIKit
             croppingDials?.forEach { $0.migneticOption = .none }
         }
     }
+    
+    lazy fileprivate var operations:OperationQueue = {
+        var queue = OperationQueue()
+        queue.name = "Resizing queue"
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
     
     lazy var imageBlendViewController: ImageBlendViewController = {
         guard let imgBlendViewController = children.first as? ImageBlendViewController else {
@@ -88,6 +96,9 @@ import UIKit
         
         // Fetch default model
         applyModel(at: 0)
+        
+        // Prepare thumbnails
+        prepareThumbs()
     }
     
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -118,11 +129,9 @@ import UIKit
         // Fetch default model
         let model = models[index]
         
-        model.prepare {
-            $0[1]
-        } completion: { images in
+        model.processImage { images in
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
                 self.image = images[1]
                 self.overlayImage = images[0]
                 self.imageBlendViewController.overlayImage = images[0]
@@ -203,6 +212,48 @@ import UIKit
         self.angleLabels?.forEach { $0.text = "\(intDegrees)°" }
     }
     
+    fileprivate func prepareThumbs() {
+        
+        hCollectionView?.alpha = 0
+        vCollectionView?.alpha = 0
+        
+        hCollectionView?.isHidden = true
+        vCollectionView?.isHidden = true
+        
+        thumbLoadingIndicator.startAnimating()
+        thumbLoadingIndicator.isHidden = false
+        thumbLoadingIndicator.alpha = 0
+        
+        UIView.animate(withDuration: 0.1) {
+            self.thumbLoadingIndicator.alpha = 1
+        } completion: { _ in
+            self.hCollectionView?.isHidden = false
+            self.vCollectionView?.isHidden = false
+            
+            let resizeOperation = ImageResizingOperation(images: self.models[0].images.layers)
+            resizeOperation.completion = { images in
+                
+                for model in self.models {
+                    model.thumbs = BlendingSet(layers: images)
+                    model.thumbs?.readyImage = images.last
+                }
+                
+                UIView.animate(withDuration: 0.2, delay: 1.5) {
+                    self.hCollectionView?.alpha = 1
+                    self.vCollectionView?.alpha = 1
+                    self.thumbLoadingIndicator.alpha = 0
+                } completion: { _ in
+                    self.thumbLoadingIndicator.isHidden = false
+                    self.hCollectionView?.reloadData()
+                    self.vCollectionView?.reloadData()
+                }
+                
+            }
+            self.operations.addOperation(resizeOperation)
+            
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func onChandeAngleSliderValue(_ sender: UISlider) {
@@ -272,7 +323,7 @@ extension  ImageBlendEditorViewController: UICollectionViewDataSource, UICollect
 {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageBlendEditorCollectionViewCell
-        cell.imageView.image = models[indexPath.row].thumb
+        cell.imageView.image = models[indexPath.row].thumbs?.readyImage
         // TODO: Implement
         return cell
     }

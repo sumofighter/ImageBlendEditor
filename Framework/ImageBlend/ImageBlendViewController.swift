@@ -1,7 +1,7 @@
 import UIKit
 
 
-public protocol ImageBlendViewControllerDelegate : class {
+public protocol ImageBlendViewControllerDelegate : AnyObject {
     
     /**
      Called on image cropped.

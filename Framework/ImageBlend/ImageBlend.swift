@@ -44,34 +44,22 @@ import UIKit
     @objc public var imageAlpha = 1.0
     @objc public var overlayImageAlpha = 1.0
     
-    public weak var model:ImageBlendModel?
-    
     @objc public init(action: Action) {
         self.action = action
     }
     
-    public func apply() {
+    public func apply(image: UIImage) -> UIImage? {
         switch action {
         case .filter:
-            let img = model?.workingImage?.createFilteredImage(filterName: availableFilters[filter.rawValue])
-            model?.workingImage = img
-            return 
+            return image.createFilteredImage(filterName: availableFilters[filter.rawValue])
         case .contrast:
-            let img = model?.workingImage?.imageContrast(value: contrast)
-            model?.workingImage = img
-            return
+            return image.imageContrast(value: contrast)
         case .brightness:
-            let img = model?.workingImage?.imageBrightness(value: brightness)
-            model?.workingImage = img
-            return
+            return image.imageBrightness(value: brightness)
         case .saturation:
-            let img = model?.workingImage?.imageSaturation(value: saturation)
-            model?.workingImage = img
-            return
+            return image.imageSaturation(value: saturation)
         case .noise:
-            let img = model?.workingImage?.imageNoise(value: noise)
-            model?.workingImage = img
-            return
+            return image.imageNoise(value: noise)
         }
     }
 }

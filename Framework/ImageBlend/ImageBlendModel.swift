@@ -26,85 +26,38 @@ import UIKit
 
 @objc public class ImageBlendModel:NSObject {
     
-    public let layers: [UIImage] // Top layer is represented by first image
-    public var workingLayers: [UIImage]? // Working copy of layers
-    public var thumb: UIImage
+    public let images: BlendingSet
+    public var thumbs: BlendingSet?
     public var name: String
-    
-    public var workingImage: UIImage?
-    public var readyImage: UIImage?
     
     // Default values
     @objc public var blends: [ImageBlend] = []
     @objc public var origin: CGPoint = .zero
     @objc public var size: CGSize = .zero
     
-    lazy fileprivate var operations:OperationQueue = {
-        var queue = OperationQueue()
-        queue.name = "Filter queue"
-        queue.maxConcurrentOperationCount = 1
-        return queue
-    }()
-    
-    @objc public init(layers: [UIImage], thumb: UIImage, name:String) {
-        self.layers = layers
-        self.thumb = thumb
+    @objc public init(layers: [UIImage], name:String) {
+        self.images = .init(layers: layers)
         self.name = name
     }
-    
-    @objc public func prepare(select: @escaping ([UIImage])->(UIImage), completion: @escaping ([UIImage])->()) {
-        guard layers.count > 1, let overlay = layers.first else {
-            print("No layers provided. At least 2 images needs to be provided to create blend action")
-            return
-        }
-        
-        if size == .zero {
-            size = overlay.size
-        }
-        
-        if let workingLayers = workingLayers {
-            completion(workingLayers)
-            return
-        }
-        
-        var indexOfLayer:Int?
+     
+    @objc public func processImage(
+        completion: @escaping ([UIImage])->()
+    ) {
+        size = images.overlay?.size ?? .zero
+        let workingImage = images.layers[0]
+        images.workingImage = workingImage
         
         for blend in blends {
             
-            if workingImage == nil {
-                workingImage = select(layers)
-                indexOfLayer = layers.firstIndex(of: workingImage!)
-            }
-            
-            let blendOperation = ImageBlendOperation(blend: blend, model: self)
-            operations.addOperation(blendOperation)
-            
-            blendOperation.completionBlock = {
-                if blendOperation.isCancelled {
-                    completion(self.layers)
-                    return
-                }
-                if self.operations.operationCount == 0 {
-                    guard let img = self.workingImage, let index = indexOfLayer else {
-                        assertionFailure("There was an error during filter operation")
-                        return
-                    }
-                    self.readyImage = img
-                    self.workingLayers = self.layers.map {$0}
-                    
-                    // replace updated image at selected index
-                    self.workingLayers![index] = img
-                    completion(self.workingLayers!)
-                }
+            images.apply(filter: blend) { images in
+                completion(images)
             }
         }
-    }
-    
-    public func suspend() {
-        operations.isSuspended = true
     }
     
     public override var description : String {
         return "<\(type(of: self)): 0x\(String(unsafeBitCast(self, to: Int.self), radix: 16, uppercase: false))> \(name)"
     }
 }
+
+

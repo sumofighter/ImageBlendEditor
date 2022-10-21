@@ -10,6 +10,9 @@
 		7C08863528F5FDC700FE2E16 /* Overlays.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C08863428F5FDC700FE2E16 /* Overlays.xcassets */; };
 		7C08864B28F6071700FE2E16 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C08864A28F6071700FE2E16 /* Extensions.swift */; };
 		7C08864D28F607F200FE2E16 /* ImageBlendModel+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C08864C28F607F200FE2E16 /* ImageBlendModel+Models.swift */; };
+		AE301B1D2902B5E3000C7AEB /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE301B1C2902B5E3000C7AEB /* Global.swift */; };
+		AE301B202902B7B9000C7AEB /* ImageThumbOpration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE301B1F2902B7B9000C7AEB /* ImageThumbOpration.swift */; };
+		AE301B222902F76C000C7AEB /* BlendingSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE301B212902F76C000C7AEB /* BlendingSet.swift */; };
 		AE51B32125A346E30016051B /* CircularAngleIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE51B32025A346E30016051B /* CircularAngleIndicator.swift */; };
 		F8A4715124377ABF00C2A46A /* ImageBlendEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A4714724377ABF00C2A46A /* ImageBlendEditor.framework */; };
 		F8A4715624377ABF00C2A46A /* PhotoCropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A4715524377ABF00C2A46A /* PhotoCropTests.swift */; };
@@ -79,6 +82,9 @@
 		7C08863428F5FDC700FE2E16 /* Overlays.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Overlays.xcassets; sourceTree = "<group>"; };
 		7C08864A28F6071700FE2E16 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7C08864C28F607F200FE2E16 /* ImageBlendModel+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageBlendModel+Models.swift"; sourceTree = "<group>"; };
+		AE301B1C2902B5E3000C7AEB /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		AE301B1F2902B7B9000C7AEB /* ImageThumbOpration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageThumbOpration.swift; sourceTree = "<group>"; };
+		AE301B212902F76C000C7AEB /* BlendingSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendingSet.swift; sourceTree = "<group>"; };
 		AE51B32025A346E30016051B /* CircularAngleIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularAngleIndicator.swift; sourceTree = "<group>"; };
 		F8A4714724377ABF00C2A46A /* ImageBlendEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageBlendEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A4714A24377ABF00C2A46A /* PhotoCrop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCrop.h; sourceTree = "<group>"; };
@@ -156,6 +162,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE301B1E2902B798000C7AEB /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				F8D4EAEA25F8EF7F007D5618 /* ImageBlendOperation.swift */,
+				AE301B1F2902B7B9000C7AEB /* ImageThumbOpration.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
 		AE51B31F25A346A70016051B /* CircularIndicator */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,16 +200,17 @@
 		F8A4714924377ABF00C2A46A /* ImageBlend */ = {
 			isa = PBXGroup;
 			children = (
+				AE301B1E2902B798000C7AEB /* Operations */,
 				F8A4718624377D0100C2A46A /* PhotoTweakView */,
 				AE51B31F25A346A70016051B /* CircularIndicator */,
 				F8A4717524377D0100C2A46A /* Category */,
 				F8A4718424377D0100C2A46A /* Constants */,
 				F8A4717B24377D0100C2A46A /* Helper */,
 				F8A4717E24377D0100C2A46A /* HorizontalDial */,
+				AE301B212902F76C000C7AEB /* BlendingSet.swift */,
 				F8D4EADE25F8B274007D5618 /* ImageBlend.swift */,
 				F8D4EABF25F2976C007D5618 /* ImageBlendModel.swift */,
 				7C08864C28F607F200FE2E16 /* ImageBlendModel+Models.swift */,
-				F8D4EAEA25F8EF7F007D5618 /* ImageBlendOperation.swift */,
 				F8A4718124377D0100C2A46A /* ImageBlendViewController.swift */,
 				F8A471FB2438544B00C2A46A /* ImageBlendEditorViewController.swift */,
 				F8A4718024377D0100C2A46A /* PhotoCropViewController+Angle.swift */,
@@ -262,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A4718524377D0100C2A46A /* PhotoCropConstants.swift */,
+				AE301B1C2902B5E3000C7AEB /* Global.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -444,6 +461,7 @@
 				F8A471B624377D0200C2A46A /* CropMaskView.swift in Sources */,
 				F8A471AC24377D0200C2A46A /* PhotoCropConstants.swift in Sources */,
 				F8A471B424377D0200C2A46A /* PhotoCropView+Touch.swift in Sources */,
+				AE301B1D2902B5E3000C7AEB /* Global.swift in Sources */,
 				F8A471B924377D0200C2A46A /* CropView+NSLayoutConstraint.swift in Sources */,
 				F8A471B224377D0200C2A46A /* PhotoCropView.swift in Sources */,
 				F8F4DBB7244082F60021FABA /* VerticalDial.swift in Sources */,
@@ -457,6 +475,7 @@
 				F8D4EADF25F8B274007D5618 /* ImageBlend.swift in Sources */,
 				F8F4DBA8244034150021FABA /* PhotoCropImageViewController.swift in Sources */,
 				F8D4EAC025F2976C007D5618 /* ImageBlendModel.swift in Sources */,
+				AE301B222902F76C000C7AEB /* BlendingSet.swift in Sources */,
 				7C08864D28F607F200FE2E16 /* ImageBlendModel+Models.swift in Sources */,
 				F8F4DB89243E14340021FABA /* ImageBlendEditorViewController.swift in Sources */,
 				F8A471B724377D0200C2A46A /* CropView.swift in Sources */,
@@ -469,6 +488,7 @@
 				F8A471AD24377D0200C2A46A /* PhotoCropView+NSLayoutConstraint.swift in Sources */,
 				F8A471B824377D0200C2A46A /* CropView+Lines.swift in Sources */,
 				AE51B32125A346E30016051B /* CircularAngleIndicator.swift in Sources */,
+				AE301B202902B7B9000C7AEB /* ImageThumbOpration.swift in Sources */,
 				F8A471B024377D0200C2A46A /* PhotoScrollView.swift in Sources */,
 				F8A471BD24377D0200C2A46A /* CropCornerView.swift in Sources */,
 				F8D4EAEB25F8EF7F007D5618 /* ImageBlendOperation.swift in Sources */,
