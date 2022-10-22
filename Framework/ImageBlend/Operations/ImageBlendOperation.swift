@@ -12,7 +12,9 @@ public protocol ImageBlendOperationDelegate : AnyObject {
     
     func imageBlendOperation(_ operation: ImageBlendOperation, image didFinishBlendProcess: UIImage)
     
-    func imageBlendOperationDidFailBlendOperation(_ operation: ImageBlendOperation)
+    func imageBlendOperationDidFail(_ operation: ImageBlendOperation)
+    
+    func imageBlendOperationDidCancel(_ operation: ImageBlendOperation)
 }
 
 public class ImageBlendOperation: Operation {
@@ -29,12 +31,13 @@ public class ImageBlendOperation: Operation {
 
     public override func main () {
         if isCancelled {
+            delegate?.imageBlendOperationDidCancel(self)
             return
         }
         let img = blend.apply(image: image)
         
         guard let i = img else {
-            delegate?.imageBlendOperationDidFailBlendOperation(self)
+            delegate?.imageBlendOperationDidFail(self)
             return
         }
         

@@ -48,11 +48,16 @@ import UIKit
         images.workingImage = workingImage
         
         for blend in blends {
-            
             images.apply(filter: blend) { images in
                 completion(images)
             }
         }
+    }
+    
+    @objc public func processThumbs(
+        completion: @escaping ()->()
+    ) {
+        
     }
     
     public override var description : String {

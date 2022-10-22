@@ -78,13 +78,15 @@ public class BlendingSet {
 }
 
 extension BlendingSet: ImageBlendOperationDelegate {
-    public func imageBlendOperation(_ operation: ImageBlendOperation, image: UIImage) {
-        workingImage = image
-    }
-    
-    public func imageBlendOperationDidFailBlendOperation(_ operation: ImageBlendOperation) {
+    public func imageBlendOperationDidFail(_ operation: ImageBlendOperation) {
         print("Failed blending process")
     }
     
+    public func imageBlendOperationDidCancel(_ operation: ImageBlendOperation) {
+        print("Cancelled blending process")
+    }
     
+    public func imageBlendOperation(_ operation: ImageBlendOperation, image: UIImage) {
+        workingImage = image
+    }
 }

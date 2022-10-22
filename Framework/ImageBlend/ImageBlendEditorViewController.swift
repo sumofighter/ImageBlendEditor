@@ -43,9 +43,16 @@ import UIKit
         }
     }
     
-    lazy fileprivate var operations:OperationQueue = {
+    lazy fileprivate var resizingOperations:OperationQueue = {
         var queue = OperationQueue()
         queue.name = "Resizing queue"
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
+    
+    lazy fileprivate var thumbsBlendingOperations:OperationQueue = {
+        var queue = OperationQueue()
+        queue.name = "Thumbs blending queue"
         queue.maxConcurrentOperationCount = 1
         return queue
     }()
@@ -235,21 +242,22 @@ import UIKit
                 
                 for model in self.models {
                     model.thumbs = BlendingSet(layers: images)
-                    model.thumbs?.readyImage = images.last
                 }
                 
-                UIView.animate(withDuration: 0.2, delay: 1.5) {
-                    self.hCollectionView?.alpha = 1
-                    self.vCollectionView?.alpha = 1
-                    self.thumbLoadingIndicator.alpha = 0
-                } completion: { _ in
-                    self.thumbLoadingIndicator.isHidden = false
-                    self.hCollectionView?.reloadData()
-                    self.vCollectionView?.reloadData()
+                let blendingOperation = ThumbsBlendingOperation(blendModels: self.models, image: images[1]) {
+                    UIView.animate(withDuration: 0.2, delay: 1.5) {
+                        self.hCollectionView?.alpha = 1
+                        self.vCollectionView?.alpha = 1
+                        self.thumbLoadingIndicator.alpha = 0
+                    } completion: { _ in
+                        self.thumbLoadingIndicator.isHidden = false
+                        self.hCollectionView?.reloadData()
+                        self.vCollectionView?.reloadData()
+                    }
                 }
-                
+                self.thumbsBlendingOperations.addOperation(blendingOperation)
             }
-            self.operations.addOperation(resizeOperation)
+            self.resizingOperations.addOperation(resizeOperation)
             
         }
     }

@@ -41,7 +41,10 @@ public extension ImageBlendModel {
         let blend2 = ImageBlend(action: .contrast)
         blend2.contrast = 1.0
         
-        model.blends = [blend1, blend2]
+        let blend3 = ImageBlend(action: .saturation)
+        blend3.saturation = 10.0
+        
+        model.blends = [blend1, blend2, blend3]
         
         return model
     }
