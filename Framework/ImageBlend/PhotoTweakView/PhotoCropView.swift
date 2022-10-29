@@ -246,14 +246,14 @@ public class PhotoCropView: UIView {
         self.maximumCanvasSize = frame.inset(by: insets).size
         self.centerPoint = CGPoint(x: maximumCanvasSize.width.half + (insets.left / 2), y: maximumCanvasSize.height.half + (insets.top / 2))
 
-        let scaleX: CGFloat = self.image.size.width / self.maximumCanvasSize.width
-        let scaleY: CGFloat = self.image.size.height / self.maximumCanvasSize.height
+        let scaleX: CGFloat = self.overlayImage.size.width / self.maximumCanvasSize.width
+        let scaleY: CGFloat = self.overlayImage.size.height / self.maximumCanvasSize.height
         let scale: CGFloat = max(scaleX, scaleY)
         
         let bounds = CGRect(x: CGFloat.zero,
                             y: CGFloat.zero,
-                            width: (self.image.size.width / scale),
-                            height: (self.image.size.height / scale))
+                            width: (self.overlayImage.size.width / scale),
+                            height: (self.overlayImage.size.height / scale))
         
         return bounds
     }
