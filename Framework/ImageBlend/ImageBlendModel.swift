@@ -43,8 +43,7 @@ import UIKit
     @objc public func processImage(
         completion: @escaping ([UIImage])->()
     ) {
-        size = images.overlay?.size ?? .zero
-        let workingImage = images.layers[0]
+        let workingImage = images.layers[1]
         images.workingImage = workingImage
         
         for blend in blends {

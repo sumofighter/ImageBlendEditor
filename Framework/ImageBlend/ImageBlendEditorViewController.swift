@@ -139,8 +139,8 @@ import UIKit
         model.processImage { images in
             
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                self.image = images[1]
                 self.overlayImage = images[0]
+                self.image = images[1]
                 self.imageBlendViewController.overlayImage = images[0]
                 self.imageBlendViewController.image = images[1]
                 self.imageBlendViewController.setupSubviews()
