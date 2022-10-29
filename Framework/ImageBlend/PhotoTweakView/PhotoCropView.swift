@@ -118,6 +118,7 @@ public class PhotoCropView: UIView {
     
     internal weak var image: UIImage!
     internal weak var overlayImage: UIImage!
+    internal var placeholderImage: UIImage!
     internal var originalSize = CGSize.zero
     
     internal var manualZoomed = false
@@ -139,11 +140,13 @@ public class PhotoCropView: UIView {
     init(frame: CGRect,
          image: UIImage,
          overlayImage: UIImage,
+         placeholderImage: UIImage,
          customizationDelegate: PhotoCropViewCustomizationDelegate!) {
         super.init(frame: frame)
         
         self.image = image
         self.overlayImage = overlayImage
+        self.placeholderImage = placeholderImage
         
         self.customizationDelegate = customizationDelegate
         
@@ -165,6 +168,7 @@ public class PhotoCropView: UIView {
             originalSize = self.maxBounds().size
             scrollView.center = self.centerPoint
             overlayImageView.image = overlayImage
+            
             
             cropView.center = self.scrollView.center
             scrollView.checkContentOffset()
@@ -286,3 +290,22 @@ public class PhotoCropView: UIView {
 //        self.scrollView.checkContentOffset()
     }
 }
+
+//extension PhotoCropView {
+//
+//    //Define your initialisers here
+//
+//    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+//        if touches.first is UITouch {
+//            print("touch started")
+//            // do something with your currentPoint
+//        }
+//    }
+//
+//    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+//        if touches.first is UITouch {
+//            print("touch ended")
+//            // do something with your currentPoint
+//        }
+//    }
+//}

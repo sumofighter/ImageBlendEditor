@@ -37,6 +37,7 @@ import UIKit
     @IBOutlet weak fileprivate var placeholderView: UIView!
     @IBOutlet weak var placeholderImageView: UIImageView!
     @IBOutlet fileprivate var angleLabels: [UILabel]?
+    @IBOutlet weak fileprivate var previewImage: UIImageView!
     @IBOutlet fileprivate var croppingDials:[BaseCroppingDial]? {
         didSet {
             croppingDials?.forEach { $0.migneticOption = .none }
@@ -143,6 +144,7 @@ import UIKit
                 self.image = images[1]
                 self.imageBlendViewController.overlayImage = images[0]
                 self.imageBlendViewController.image = images[1]
+                self.imageBlendViewController.placeholderImage = self.placeholderImageView.image
                 self.imageBlendViewController.setupSubviews()
                 
                 self.croppingDials?.forEach { $0.value = 0.0 }

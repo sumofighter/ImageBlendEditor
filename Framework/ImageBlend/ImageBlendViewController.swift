@@ -29,6 +29,11 @@ open class ImageBlendViewController: UIViewController {
     public var overlayImage: UIImage!
     
     /*
+     Placeholder image.
+     */
+    public var placeholderImage: UIImage!
+    
+    /*
      The optional photo tweaks controller delegate.
      */
     public weak var delegate: ImageBlendViewControllerDelegate?
@@ -47,6 +52,7 @@ open class ImageBlendViewController: UIViewController {
         let photoView = PhotoCropView(frame: self.view.bounds,
                                       image: self.image,
                                       overlayImage: self.overlayImage,
+                                      placeholderImage: UIImage(),
                                       customizationDelegate: self)
         photoView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(photoView)
@@ -102,6 +108,7 @@ open class ImageBlendViewController: UIViewController {
         photoView = PhotoCropView(frame: self.view.bounds,
                                   image: self.image,
                                   overlayImage: self.overlayImage,
+                                  placeholderImage: UIImage(),
                                   customizationDelegate: self)
         photoView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(photoView)
