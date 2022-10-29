@@ -58,6 +58,11 @@ class EditorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        imageBlendEditorViewController.viewWillTransition(to: size, with: coordinator)
+    }
+    
     // MARK: Action
     
     @IBAction func didPressAcceptButton(_ sender: Any) {
