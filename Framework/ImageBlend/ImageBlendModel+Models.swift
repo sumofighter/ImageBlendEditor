@@ -1,6 +1,36 @@
 import UIKit
 
 public extension ImageBlendModel {
+    static func newspaperOverlay(image: UIImage) -> ImageBlendModel? {
+        
+        guard
+            let overlayImage = UIImage(named: "overlay_4", in: Bundle.this, with: nil)
+        else {
+            return nil
+        }
+        
+        let layers = [overlayImage, image]
+        let model = ImageBlendModel(layers: layers, name: "noise overlay")
+        
+        let blend1 = ImageBlend(action: .filter)
+        blend1.filter = .fade
+        
+        let blend2 = ImageBlend(action: .saturation)
+        blend2.saturation = 3.0
+        
+        let blend3 = ImageBlend(action: .brightness)
+        blend3.brightness = 0.5
+        
+        let blend4 = ImageBlend(action: .noise)
+        blend4.noise = 10
+        
+        model.blends = [blend2, blend3, blend4]
+        
+        return model
+    }
+    
+    
+    
     static func basicOverlay(image: UIImage) -> ImageBlendModel? {
         guard
             let overlayImage = UIImage(named: "overlay_2", in: Bundle.this, with: nil)

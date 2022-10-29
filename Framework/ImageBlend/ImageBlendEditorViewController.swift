@@ -30,6 +30,7 @@ import UIKit
     @objc public var overlayImage: UIImage?
     
     @IBOutlet weak var thumbLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var hCollectionView: UICollectionView?
     @IBOutlet weak var vCollectionView: UICollectionView?
     @IBOutlet var circularIndicatorViews: [CircularAngleIndicator]!
@@ -132,6 +133,9 @@ import UIKit
     
     @objc public func applyModel(at index: Int) {
         photoCropView.alpha = 0
+        placeholderView.isHidden = false
+        imageLoadingIndicator.isHidden = false
+        imageLoadingIndicator.startAnimating()
         
         // Fetch default model
         let model = models[index]
@@ -148,7 +152,9 @@ import UIKit
                 self.croppingDials?.forEach { $0.value = 0.0 }
                 self.setupAngleLabelValue(radians: 0.0)
                 self.imageBlendViewController.refresh()
-                
+                self.imageLoadingIndicator.stopAnimating()
+                self.imageLoadingIndicator.isHidden = true
+                self.placeholderView.isHidden = true
                 UIView.animate(withDuration: 0.1, animations: {
                     self.photoCropView.alpha = 1.0
                 })
