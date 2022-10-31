@@ -20,7 +20,7 @@ public protocol ImageBlendOperationDelegate : AnyObject {
 public class ImageBlendOperation: Operation {
     
     let blend:ImageBlend
-    let image:UIImage
+    var image:UIImage
     weak var delegate: ImageBlendOperationDelegate?
     
     init(blend:ImageBlend, image:UIImage) {

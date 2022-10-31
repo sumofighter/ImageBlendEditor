@@ -51,6 +51,7 @@ public class BlendingSet {
         
         let blendOperation = ImageBlendOperation(blend: filter, image: workingImage)
         blendOperation.delegate = self
+        operations.maxConcurrentOperationCount = 1
         operations.addOperation(blendOperation)
         
         blendOperation.completionBlock = {
@@ -87,6 +88,12 @@ extension BlendingSet: ImageBlendOperationDelegate {
     }
     
     public func imageBlendOperation(_ operation: ImageBlendOperation, image: UIImage) {
-        workingImage = image
+        operations.operations.forEach { operation in
+            guard let op = operation as? ImageBlendOperation else {
+                return
+            }
+            op.image = image
+            workingImage = image
+        }
     }
 }

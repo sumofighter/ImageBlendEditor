@@ -1,6 +1,31 @@
 import UIKit
 
 public extension ImageBlendModel {
+    static func retroOverlay(image: UIImage) -> ImageBlendModel? {
+        guard
+            let overlayImage = UIImage(named: "overlay_1", in: Bundle.this, with: nil)
+        else {
+            return nil
+        }
+        
+        let layers = [overlayImage, image]
+        let model = ImageBlendModel(layers: layers, name: "retro overlay")
+        
+        let filter = ImageBlend(action: .filter)
+        filter.filter = .sepia
+        
+        let brightness = ImageBlend(action: .brightness)
+        brightness.brightness = 0.3
+
+        let contrast = ImageBlend(action: .contrast)
+        contrast.contrast = 2.0
+        
+        
+        model.blends = [brightness, filter, contrast, filter]
+        
+        return model
+    }
+    
     static func newspaperOverlay(image: UIImage) -> ImageBlendModel? {
         
         guard
@@ -16,13 +41,13 @@ public extension ImageBlendModel {
         blend1.filter = .fade
         
         let blend2 = ImageBlend(action: .saturation)
-        blend2.saturation = 3.0
+        blend2.saturation = 2.0
         
         let blend3 = ImageBlend(action: .brightness)
-        blend3.brightness = 0.5
+        blend3.brightness = 0.2
         
         let blend4 = ImageBlend(action: .noise)
-        blend4.noise = 10
+        blend4.noise = 2
         
         model.blends = [blend2, blend3, blend4]
         
@@ -49,30 +74,6 @@ public extension ImageBlendModel {
         
         let blend3 = ImageBlend(action: .brightness)
         blend3.brightness = 0
-        
-        model.blends = [blend1, blend2, blend3]
-        
-        return model
-    }
-    
-    static func retroOverlay(image: UIImage) -> ImageBlendModel? {
-        guard
-            let overlayImage = UIImage(named: "overlay_1", in: Bundle.this, with: nil)
-        else {
-            return nil
-        }
-        
-        let layers = [overlayImage, image]
-        let model = ImageBlendModel(layers: layers, name: "retro overlay")
-        
-        let blend1 = ImageBlend(action: .filter)
-        blend1.filter = .chrome
-        
-        let blend2 = ImageBlend(action: .contrast)
-        blend2.contrast = 1.0
-        
-        let blend3 = ImageBlend(action: .saturation)
-        blend3.saturation = 10.0
         
         model.blends = [blend1, blend2, blend3]
         
