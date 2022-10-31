@@ -162,9 +162,15 @@ public class PhotoCropView: UIView {
         super.layoutSubviews()
         
         if !manualMove {
-            originalSize = self.maxBounds().size
-            scrollView.center = self.centerPoint
+            originalSize = maxBounds().size
+            
+            scrollView.center = centerPoint
+            
+            overlayImageView.center = centerPoint
+            overlayImageView.bounds = maxBounds()
             overlayImageView.image = overlayImage
+            
+            photoContentView.frame = fillBounds
             
             cropView.center = self.scrollView.center
             scrollView.checkContentOffset()
