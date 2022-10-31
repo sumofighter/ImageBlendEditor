@@ -80,10 +80,10 @@ public extension ImageBlendModel {
         return model
     }
     
-    static func noiseOverlay(image: UIImage) -> ImageBlendModel? {
+    static func oldTVOverlay(image: UIImage) -> ImageBlendModel? {
         
         guard
-            let overlayImage = UIImage(named: "overlay_3", in: Bundle.this, with: nil)
+            let overlayImage = UIImage(named: "old_tv", in: Bundle.this, with: nil)
         else {
             return nil
         }
@@ -92,18 +92,15 @@ public extension ImageBlendModel {
         let model = ImageBlendModel(layers: layers, name: "noise overlay")
         
         let blend1 = ImageBlend(action: .filter)
-        blend1.filter = .fade
-        
-        let blend2 = ImageBlend(action: .saturation)
-        blend2.saturation = 10.0
+        blend1.filter = .noir
         
         let blend3 = ImageBlend(action: .brightness)
-        blend3.brightness = 0.5
+        blend3.brightness = 0.3
         
         let blend4 = ImageBlend(action: .noise)
-        blend4.noise = 40
+        blend4.noise = 5
         
-        model.blends = [blend2, blend3, blend4]
+        model.blends = [blend1, blend3, blend4]
         
         return model
     }
