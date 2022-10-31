@@ -3,7 +3,7 @@ import UIKit
 public extension ImageBlendModel {
     static func retroOverlay(image: UIImage) -> ImageBlendModel? {
         guard
-            let overlayImage = UIImage(named: "overlay_1", in: Bundle.this, with: nil)
+            let overlayImage = UIImage(named: "old_photo", in: Bundle.this, with: nil)
         else {
             return nil
         }
@@ -29,7 +29,7 @@ public extension ImageBlendModel {
     static func newspaperOverlay(image: UIImage) -> ImageBlendModel? {
         
         guard
-            let overlayImage = UIImage(named: "overlay_4", in: Bundle.this, with: nil)
+            let overlayImage = UIImage(named: "newspaper", in: Bundle.this, with: nil)
         else {
             return nil
         }
@@ -56,9 +56,9 @@ public extension ImageBlendModel {
     
     
     
-    static func basicOverlay(image: UIImage) -> ImageBlendModel? {
+    static func timeOverlay(image: UIImage) -> ImageBlendModel? {
         guard
-            let overlayImage = UIImage(named: "overlay_2", in: Bundle.this, with: nil)
+            let overlayImage = UIImage(named: "time", in: Bundle.this, with: nil)
         else {
             return nil
         }
