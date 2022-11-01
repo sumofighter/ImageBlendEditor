@@ -26,6 +26,31 @@ public extension ImageBlendModel {
         return model
     }
     
+    static func saturationOverlay(image: UIImage) -> ImageBlendModel? {
+        guard
+            let overlayImage = UIImage(named: "saturated_noise", in: Bundle.this, with: nil)
+        else {
+            return nil
+        }
+        
+        let layers = [overlayImage, image]
+        let model = ImageBlendModel(layers: layers, name: "saturated noise")
+        
+        
+        let brightness = ImageBlend(action: .brightness)
+        brightness.brightness = 0.2
+
+        let contrast = ImageBlend(action: .contrast)
+        contrast.contrast = 2.5
+        
+        let noise = ImageBlend(action: .noise)
+        noise.noise = 1
+        
+        model.blends = [brightness, contrast, noise]
+        
+        return model
+    }
+    
     static func newspaperOverlay(image: UIImage) -> ImageBlendModel? {
         
         guard
