@@ -29,6 +29,6 @@ class BlendManager {
             return []
         }
         
-        return [m1, m2, m3, m4, m5]
+        return [m5, m2, m3, m4, m1]
     }
 }

@@ -38,15 +38,18 @@ public extension ImageBlendModel {
         
         
         let brightness = ImageBlend(action: .brightness)
-        brightness.brightness = 0.2
+        brightness.brightness = -0.05
 
         let contrast = ImageBlend(action: .contrast)
-        contrast.contrast = 2.5
+        contrast.contrast = 1.7
+        
+        let saturation = ImageBlend(action: .saturation)
+        saturation.saturation = 1.5
         
         let noise = ImageBlend(action: .noise)
         noise.noise = 1
         
-        model.blends = [brightness, contrast, noise]
+        model.blends = [saturation, brightness, noise]
         
         return model
     }
