@@ -35,9 +35,11 @@ import UIKit
     @objc public var origin: CGPoint = .zero
     @objc public var size: CGSize = .zero
     
-    @objc public init(layers: [UIImage], name:String) {
+    @objc public init(layers: [UIImage], name:String, thumb: UIImage) {
         self.images = .init(layers: layers)
         self.name = name
+        self.thumbs = BlendingSet(layers: [thumb])
+        self.thumbs?.readyImage = thumb
     }
      
     @objc public func processImage(

@@ -3,13 +3,14 @@ import UIKit
 public extension ImageBlendModel {
     static func retroOverlay(image: UIImage) -> ImageBlendModel? {
         guard
-            let overlayImage = UIImage(named: "old_photo", in: Bundle.this, with: nil)
+            let overlayImage = UIImage(named: "old_photo", in: Bundle.this, with: nil),
+            let thumbImage = UIImage(named: "old_photo_thumb", in: Bundle.this, with: nil)
         else {
             return nil
         }
         
         let layers = [overlayImage, image]
-        let model = ImageBlendModel(layers: layers, name: "retro overlay")
+        let model = ImageBlendModel(layers: layers, name: "retro overlay", thumb: thumbImage)
         
         let filter = ImageBlend(action: .filter)
         filter.filter = .sepia
@@ -28,13 +29,14 @@ public extension ImageBlendModel {
     
     static func saturationOverlay(image: UIImage) -> ImageBlendModel? {
         guard
-            let overlayImage = UIImage(named: "saturated_noise", in: Bundle.this, with: nil)
+            let overlayImage = UIImage(named: "saturated_noise", in: Bundle.this, with: nil),
+            let thumbImage = UIImage(named: "saturated_noise_thumb", in: Bundle.this, with: nil)
         else {
             return nil
         }
         
         let layers = [overlayImage, image]
-        let model = ImageBlendModel(layers: layers, name: "saturated noise")
+        let model = ImageBlendModel(layers: layers, name: "saturated noise", thumb: thumbImage)
         
         
         let brightness = ImageBlend(action: .brightness)
@@ -57,13 +59,14 @@ public extension ImageBlendModel {
     static func newspaperOverlay(image: UIImage) -> ImageBlendModel? {
         
         guard
-            let overlayImage = UIImage(named: "newspaper", in: Bundle.this, with: nil)
+            let overlayImage = UIImage(named: "newspaper", in: Bundle.this, with: nil),
+            let thumbImage = UIImage(named: "newspaper_thumb", in: Bundle.this, with: nil)
         else {
             return nil
         }
         
         let layers = [overlayImage, image]
-        let model = ImageBlendModel(layers: layers, name: "noise overlay")
+        let model = ImageBlendModel(layers: layers, name: "noise overlay", thumb: thumbImage)
         
         let blend1 = ImageBlend(action: .filter)
         blend1.filter = .fade
@@ -86,13 +89,14 @@ public extension ImageBlendModel {
     
     static func timeOverlay(image: UIImage) -> ImageBlendModel? {
         guard
-            let overlayImage = UIImage(named: "time", in: Bundle.this, with: nil)
+            let overlayImage = UIImage(named: "time", in: Bundle.this, with: nil),
+            let thumbImage = UIImage(named: "time_thumb", in: Bundle.this, with: nil)
         else {
             return nil
         }
         
         let layers = [overlayImage, image]
-        let model = ImageBlendModel(layers: layers, name: "basic overlay")
+        let model = ImageBlendModel(layers: layers, name: "basic overlay", thumb: thumbImage)
         
         let blend1 = ImageBlend(action: .filter)
         blend1.filter = .vignette
@@ -111,13 +115,14 @@ public extension ImageBlendModel {
     static func oldTVOverlay(image: UIImage) -> ImageBlendModel? {
         
         guard
-            let overlayImage = UIImage(named: "old_tv", in: Bundle.this, with: nil)
+            let overlayImage = UIImage(named: "old_tv", in: Bundle.this, with: nil),
+            let thumbImage = UIImage(named: "old_tv_thumb", in: Bundle.this, with: nil)
         else {
             return nil
         }
         
         let layers = [overlayImage, image]
-        let model = ImageBlendModel(layers: layers, name: "noise overlay")
+        let model = ImageBlendModel(layers: layers, name: "noise overlay", thumb: thumbImage)
         
         let blend1 = ImageBlend(action: .filter)
         blend1.filter = .noir

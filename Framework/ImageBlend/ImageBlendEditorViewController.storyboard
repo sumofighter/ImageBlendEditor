@@ -308,14 +308,8 @@
                                     <outlet property="delegate" destination="xqD-q0-mkO" id="cxK-tp-QrX"/>
                                 </connections>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="YFW-sg-0m1">
-                                <rect key="frame" x="197" y="728" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="SCO-ez-Yy8"/>
-                                    <constraint firstAttribute="width" constant="20" id="pQc-pw-AkT"/>
-                                </constraints>
-                            </activityIndicatorView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="60D-xI-fda"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vkF-9K-5Yb" firstAttribute="top" secondItem="wmn-vn-EMb" secondAttribute="bottom" constant="4" id="0Gw-TN-NwW"/>
@@ -327,7 +321,6 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="nKD-hO-s8Y" firstAttribute="bottom" secondItem="0AX-ko-kYy" secondAttribute="bottom" id="8Ap-BM-6MC"/>
-                            <constraint firstItem="YFW-sg-0m1" firstAttribute="centerY" secondItem="6dg-wz-Myy" secondAttribute="centerY" id="Ack-zZ-qYU"/>
                             <constraint firstItem="wmn-vn-EMb" firstAttribute="top" secondItem="0AX-ko-kYy" secondAttribute="top" id="BMf-ij-Y79"/>
                             <constraint firstItem="xj6-qQ-Gfd" firstAttribute="width" secondItem="wmn-vn-EMb" secondAttribute="width" multiplier="0.6" id="BYo-g7-tIa"/>
                             <constraint firstAttribute="trailing" secondItem="77F-1o-dqv" secondAttribute="trailing" constant="25" id="FJT-Ke-iEe"/>
@@ -340,9 +333,7 @@
                             <constraint firstAttribute="bottom" secondItem="6dg-wz-Myy" secondAttribute="bottom" id="RMr-dv-K2Z"/>
                             <constraint firstItem="pJg-WE-bjW" firstAttribute="trailing" secondItem="6dg-wz-Myy" secondAttribute="leading" id="Rc8-9q-XN4"/>
                             <constraint firstAttribute="trailing" secondItem="pJg-WE-bjW" secondAttribute="trailing" id="U6e-m3-GR6"/>
-                            <constraint firstItem="YFW-sg-0m1" firstAttribute="centerX" secondItem="6dg-wz-Myy" secondAttribute="centerX" id="ZkS-uT-oUB"/>
                             <constraint firstItem="vkF-9K-5Yb" firstAttribute="trailing" secondItem="0AX-ko-kYy" secondAttribute="trailing" id="eYR-On-VD2"/>
-                            <constraint firstItem="YFW-sg-0m1" firstAttribute="centerX" secondItem="vkF-9K-5Yb" secondAttribute="centerX" id="f9r-r0-hNB"/>
                             <constraint firstItem="nKD-hO-s8Y" firstAttribute="leading" secondItem="0AX-ko-kYy" secondAttribute="leading" constant="6" id="fyH-ag-NBT"/>
                             <constraint firstItem="wmn-vn-EMb" firstAttribute="leading" secondItem="0AX-ko-kYy" secondAttribute="leading" id="i4H-OV-AfC"/>
                             <constraint firstItem="xj6-qQ-Gfd" firstAttribute="top" secondItem="0AX-ko-kYy" secondAttribute="top" constant="10" id="iG4-E2-ohM"/>
@@ -350,7 +341,6 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                             </constraint>
-                            <constraint firstItem="YFW-sg-0m1" firstAttribute="centerY" secondItem="vkF-9K-5Yb" secondAttribute="centerY" id="ncm-tt-qAu"/>
                             <constraint firstItem="6dg-wz-Myy" firstAttribute="leading" secondItem="wmn-vn-EMb" secondAttribute="trailing" id="oee-xg-web"/>
                             <constraint firstItem="wmn-vn-EMb" firstAttribute="trailing" secondItem="0AX-ko-kYy" secondAttribute="trailing" id="rCp-XU-pAy"/>
                             <constraint firstItem="vkF-9K-5Yb" firstAttribute="leading" secondItem="0AX-ko-kYy" secondAttribute="leading" id="raC-70-WIa"/>
@@ -363,8 +353,8 @@
                                 <exclude reference="6dg-wz-Myy"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="U6e-m3-GR6"/>
                                 <exclude reference="1MJ-Ts-gyf"/>
+                                <exclude reference="U6e-m3-GR6"/>
                                 <exclude reference="BMf-ij-Y79"/>
                                 <exclude reference="rCp-XU-pAy"/>
                                 <exclude reference="yDx-xt-bb6"/>
@@ -393,8 +383,6 @@
                                 <include reference="1MJ-Ts-gyf"/>
                                 <include reference="BMf-ij-Y79"/>
                                 <include reference="yDx-xt-bb6"/>
-                                <exclude reference="f9r-r0-hNB"/>
-                                <exclude reference="ncm-tt-qAu"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -402,11 +390,9 @@
                                 <exclude reference="77F-1o-dqv"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Rc8-9q-XN4"/>
                                 <include reference="U6e-m3-GR6"/>
                                 <include reference="rCp-XU-pAy"/>
-                                <exclude reference="Ack-zZ-qYU"/>
-                                <exclude reference="ZkS-uT-oUB"/>
-                                <exclude reference="Rc8-9q-XN4"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -414,12 +400,10 @@
                                 <exclude reference="77F-1o-dqv"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Rc8-9q-XN4"/>
                                 <include reference="U6e-m3-GR6"/>
                                 <include reference="rCp-XU-pAy"/>
                                 <exclude reference="yDx-xt-bb6"/>
-                                <include reference="f9r-r0-hNB"/>
-                                <include reference="ncm-tt-qAu"/>
-                                <exclude reference="Rc8-9q-XN4"/>
                             </mask>
                         </variation>
                     </view>
@@ -429,7 +413,6 @@
                         <outlet property="photoCropView" destination="pJg-WE-bjW" id="hfZ-ZS-GQ6"/>
                         <outlet property="placeholderImageView" destination="MLm-RJ-eKf" id="hBr-mg-xR4"/>
                         <outlet property="placeholderView" destination="wmn-vn-EMb" id="m3y-G6-FS5"/>
-                        <outlet property="thumbLoadingIndicator" destination="YFW-sg-0m1" id="KfT-0I-2n5"/>
                         <outlet property="vCollectionView" destination="6dg-wz-Myy" id="j5k-CK-jau"/>
                         <outletCollection property="croppingDials" destination="1iC-Bd-8Oe" collectionClass="NSMutableArray" id="gos-Mr-Ug6"/>
                         <outletCollection property="croppingDials" destination="9hO-eV-YDC" collectionClass="NSMutableArray" id="Lw8-im-vn0"/>

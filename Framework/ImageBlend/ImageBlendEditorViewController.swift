@@ -29,7 +29,6 @@ import UIKit
     @objc public var image: UIImage?
     @objc public var overlayImage: UIImage?
     
-    @IBOutlet weak var thumbLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var hCollectionView: UICollectionView?
     @IBOutlet weak var vCollectionView: UICollectionView?
@@ -227,45 +226,7 @@ import UIKit
     
     fileprivate func prepareThumbs() {
         
-        hCollectionView?.alpha = 0
-        vCollectionView?.alpha = 0
         
-        hCollectionView?.isHidden = true
-        vCollectionView?.isHidden = true
-        
-        thumbLoadingIndicator.startAnimating()
-        thumbLoadingIndicator.isHidden = false
-        thumbLoadingIndicator.alpha = 0
-        
-        UIView.animate(withDuration: 0.1) {
-            self.thumbLoadingIndicator.alpha = 1
-        } completion: { _ in
-            self.hCollectionView?.isHidden = false
-            self.vCollectionView?.isHidden = false
-            
-            let resizeOperation = ImageResizingOperation(images: self.models[0].images.layers)
-            resizeOperation.completion = { images in
-                
-                for model in self.models {
-                    model.thumbs = BlendingSet(layers: images)
-                }
-                
-                let blendingOperation = ThumbsBlendingOperation(blendModels: self.models, image: images[1]) {
-                    UIView.animate(withDuration: 0.2, delay: 1.5) {
-                        self.hCollectionView?.alpha = 1
-                        self.vCollectionView?.alpha = 1
-                        self.thumbLoadingIndicator.alpha = 0
-                    } completion: { _ in
-                        self.thumbLoadingIndicator.isHidden = false
-                        self.hCollectionView?.reloadData()
-                        self.vCollectionView?.reloadData()
-                    }
-                }
-                self.thumbsBlendingOperations.addOperation(blendingOperation)
-            }
-            self.resizingOperations.addOperation(resizeOperation)
-            
-        }
     }
     
     // MARK: - Actions
