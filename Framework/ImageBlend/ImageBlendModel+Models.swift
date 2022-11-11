@@ -137,4 +137,34 @@ public extension ImageBlendModel {
         
         return model
     }
+    
+    static func birdsOverlay(image: UIImage) -> ImageBlendModel? {
+        
+        guard
+            let overlayImage = UIImage(named: "birds", in: Bundle.this, with: nil),
+            let thumbImage = UIImage(named: "old_tv_thumb", in: Bundle.this, with: nil)
+        else {
+            return nil
+        }
+        
+        let layers = [overlayImage, image]
+        let model = ImageBlendModel(layers: layers, name: "saturated noise", thumb: thumbImage)
+        
+        
+        let brightness = ImageBlend(action: .brightness)
+        brightness.brightness = -0.05
+
+        let contrast = ImageBlend(action: .contrast)
+        contrast.contrast = 1.7
+        
+        let saturation = ImageBlend(action: .saturation)
+        saturation.saturation = 1.5
+        
+        let noise = ImageBlend(action: .noise)
+        noise.noise = 1
+        
+        model.blends = [saturation, brightness, noise]
+        
+        return model
+    }
 }

@@ -13,6 +13,7 @@ class BlendManager {
     
     class func models(image:UIImage) -> [ImageBlendModel] {
         
+        let model0 = ImageBlendModel.birdsOverlay(image: image)
         let model1 = ImageBlendModel.retroOverlay(image: image)
         let model2 = ImageBlendModel.newspaperOverlay(image: image)
         let model3 = ImageBlendModel.timeOverlay(image: image)
@@ -20,6 +21,7 @@ class BlendManager {
         let model5 = ImageBlendModel.saturationOverlay(image: image)
         
         guard
+            let m0 = model0,
             let m1 = model1,
             let m2 = model2,
             let m3 = model3,
@@ -29,6 +31,6 @@ class BlendManager {
             return []
         }
         
-        return [m1, m2, m3, m4, m5]
+        return [m0, m1, m2, m3, m4, m5]
     }
 }
